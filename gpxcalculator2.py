@@ -4,9 +4,6 @@ import numpy as np
 import math
 import datetime
 from config import dconfig
-import pandas as pd
-import time
-
 
 def gpxdatareading(n,gpx):
     with open(gpx,"r",encoding="utf-8") as gpx_file:
