@@ -1,0 +1,18 @@
+[project]
+name = "finndatasailing"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Gian-Andrea Hehli",email = "gian-andrea.hehli@geoprevent.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "gpxpy>=1.6.2,<2.0.0",
+    "numpy>=1.21.0,<2.2.0",
+    # Remove datetime - it's part of Python's standard library
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
