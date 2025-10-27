@@ -1,5 +1,6 @@
 #Konfigurations file
 def dconfig():
+    s=int(input("Startzeitpunkt ="))
     n=int(input("Anzahl der Rechenschritte = "))
     nWD=int(input("Grobe Windrichtung [deg] = "))
     ta=100  
