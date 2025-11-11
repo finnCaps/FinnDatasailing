@@ -1,4 +1,3 @@
-#daten einlesen
 import gpxpy
 import numpy as np
 import math
@@ -8,8 +7,8 @@ import matplotlib.pyplot as plt
 
 
 
-def gpxdatareading(n,gpx,s):
-    with open(gpx,"r",encoding="utf-8") as gpx_file:
+def gpxdatareading(s,n,gpx):
+    with open(gpx,"r",encoding="utf-8") as gpx_file:                #einlesen der gpx datei s:Startzeitpunkt n:rechenschritte gpx:GPXDaten   with open(gpx,"r",encoding="utf-8") as gpx_file:
         gpx=gpxpy.parse(gpx_file)
 
         
@@ -33,10 +32,10 @@ def gpxdatareading(n,gpx,s):
                 break
         if count >= n:
             break
+    return data1
 
 
-
-#berechnen: heading, speed
+def gpxheadingspeed(s,n,data1):#berechnen: heading, speed
 
     
     cc=np.zeros(n)
@@ -64,8 +63,18 @@ def gpxdatareading(n,gpx,s):
                 data1[4,i]=360+(math.degrees(math.atan(cc[i]/al[i])))   #270-360deg
         
         dt[i]=abs(data1[0,i+1]-data1[0,i])                          #delta time
-        data1[5,i]=math.sqrt(cc[i]**2+al[i]**2)*60*3600/dt[i]          #speed in[knt]   
-    
+        data1[5,i]=math.sqrt(cc[i]**2+al[i]**2)*60*3600/dt[i]
+        
+    da1out=np.zeros((6, n))                    #0time 1Speed 2heading 3countercathode dlongitude 4adjacent leg dlatitude 5delta time 
+    da1out[0]=data1[0]
+    da1out[1]=data1[5]
+    da1out[2]=data1[4]
+    da1out[3]=cc
+    da1out[4]=al
+    da1out[5]=dt
+   
+    return data1,da1out
+
     #Auswerten von cc und al (Gegen kathete und ankathete)
     xpoints = np.array(((data1[0,0:n])-data1[0,0])/60)
     y1points = np.array(cc)
@@ -82,21 +91,13 @@ def gpxdatareading(n,gpx,s):
     plt.grid(True) 
     plt.legend()
     
-            
-#Daten Speichern im Array
+    
 
-    da1out=np.zeros((6, n))                    #0time 1Speed 2heading 3countercathode dlongitude 4adjacent leg dlatitude 5delta time 
-    da1out[0]=data1[0]
-    da1out[1]=data1[5]
-    da1out[2]=data1[4]
-    da1out[3]=cc
-    da1out[4]=al
-    da1out[5]=dt
-
+    
 
 
 #ausgabe
-    return da1out, data1
+    
 
     print("lat",data1[2])
     print("time",data1[0])
