@@ -7,7 +7,7 @@ import numpy as np
 
 #print("test")
 
-def dcourses(n,nWD,ta,da1out,r):
+def dcourses(n,nWD,ta,da1out):
     #Auswählen der Werte für einen up an down
     v=0
     da2 = np.zeros((8,n))                    #0time 1Speed 2heading 3countercathode dlongitude 4adjacent leg dlatitude 5delta time  6: 1=Amwind pt 2=Amwind sbt 3=Halbwind(ablauftonne) 4=Vorwind 7:dZeit über ganze berechnung
@@ -75,10 +75,12 @@ def dcourses(n,nWD,ta,da1out,r):
             twde[v]=(da2[2,v]+(ta/2))%360
         v=v+1
 
-    
+    twd=1
+    """
     twd=np.zeros(n)   #true wind direction
     k=np.convolve(twde, np.ones(r)/r, mode='valid')
     twd=[0]*(r-1)+list(k)
+    """
     #v=0
     #twd=np.zeros(n-1)   #true wind direction
     #while v<n-5:

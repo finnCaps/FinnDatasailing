@@ -8,9 +8,9 @@ import os
 
 def main():
     os.system("cls")
-    n,nWD,ta,gpx,s,r=dconfig()
+    n,nWD,ta,gpx,s=dconfig()
     da1out,data1=gpxdatareading(n,gpx,s)
-    da2,toC,twd,twde=dcourses(n,nWD,ta,da1out,r) # out: toC
+    da2,toC,twd,twde=dcourses(n,nWD,ta,da1out) # out: toC
     #print("Kurs",da2[6])
     #print("Heading [deg]",da2[2])
     print("Time of Calculation[min]:",toC)

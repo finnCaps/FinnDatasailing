@@ -11,6 +11,8 @@ dependencies = [
     "gpxpy>=1.6.2,<2.0.0",
     "numpy>=1.21.0,<2.2.0",
     # Remove datetime - it's part of Python's standard library
+    "folium (>=0.20.0,<0.21.0)",
+    "matplotlib (>=3.10.7,<4.0.0)"
 ]
 
 [build-system]
