@@ -96,17 +96,5 @@ def gpxheadingspeed(s,n,data1):#berechnen: heading, speed
     
 
 
-#ausgabe
-    
-
-    print("lat",data1[2])
-    print("time",data1[0])
-
-    print("Time:",da1out[0])
-    print("speed",da1out[1])
-    print("heading",da1out[2])
-    print("3countercathode",da1out[3])
-    print("adjacent leg",da1out[4])
-#print("delta time",da1out[5])
 
 
