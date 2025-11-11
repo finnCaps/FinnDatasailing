@@ -64,16 +64,22 @@ def gpxheadingspeed(s,n,data1):#berechnen: heading, speed
         
         dt[i]=abs(data1[0,i+1]-data1[0,i])                          #delta time
         data1[5,i]=math.sqrt(cc[i]**2+al[i]**2)*60*3600/dt[i]
-        
-    da1out=np.zeros((6, n))                    #0time 1Speed 2heading 3countercathode dlongitude 4adjacent leg dlatitude 5delta time 
-    da1out[0]=data1[0]
-    da1out[1]=data1[5]
-    da1out[2]=data1[4]
-    da1out[3]=cc
-    da1out[4]=al
-    da1out[5]=dt
+    
    
-    return data1,da1out
+    
+    mDa=np.zeros((8, n))  #0time 1Speed 2heading 3countercathode dlongitude 4adjacent leg dlatitude 5delta time  6: 1=Amwind pt 2=Amwind sbt 3=Halbwind(ablauftonne) 4=Vorwind 7:dZeit über ganze berechnung        
+    mDa[0]=data1[0]
+    mDa[1]=data1[5]
+    mDa[2]=data1[4]
+    mDa[3]=cc
+    mDa[4]=al
+    mDa[5]=dt
+    
+    toC=(mDa[0,n-1]-mDa[0,0])/60            #time of calculation in minutes
+    print("Time of Calculation[min]:",toC)
+
+
+    return mDa
 
     #Auswerten von cc und al (Gegen kathete und ankathete)
     xpoints = np.array(((data1[0,0:n])-data1[0,0])/60)

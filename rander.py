@@ -16,14 +16,14 @@ def manuMap(data1, da2,n,twd):
 
    #Plotten der Windrichtung
    
-def plot(da2,twd,twde,n):
+def plot(n,mDa,twde):
     
-    xpoints = np.array(((da2[0,0:n])-da2[0,0])/60)
-    xpoints3=np.array(((da2[0,0:n])-da2[0,1])/60)
+    xpoints = np.array(((mDa[0,0:n])-mDa[0,0])/60)
+    xpoints3=np.array(((mDa[0,0:n])-mDa[0,1])/60)
    # y1points = np.array(twd)        #true wind direction
-    y2points=np.array((da2[6,0:n])*1)   #Kurs: pt=1,stbt=2,r=3,d=4
+    y2points=np.array((mDa[6,0:n])*1)   #Kurs: pt=1,stbt=2,r=3,d=4
     y3points = np.array(twde)   #true wind direction exact
-    y4points=np.array(da2[2,0:n])   #heading
+    y4points=np.array(mDa[2,0:n])   #heading
 
     #plt.ion()
     plt.figure(2)
