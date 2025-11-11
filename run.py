@@ -17,6 +17,7 @@ def main():
     #print("True Wind direction [deg]:",twd)
     #manuMap(data1, da2,n,twd)
     plot(da2,twd,twde,n)
+    print("branch: version_two")
 
 if __name__=="__main__":
     main()
